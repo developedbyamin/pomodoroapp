@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
+import '../../repository/session_repository.dart';
 import '../settings/settings_controller.dart';
 import 'bar_graph/bar_graph.dart';
 
@@ -37,8 +38,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
-    )
-      ..repeat(reverse: true);
+    )..repeat(reverse: true);
   }
 
   @override
@@ -49,8 +49,8 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
   @override
   Widget build(BuildContext context) {
+    FocusSessionRepository repository = FocusSessionRepository();
     final settingsController = Provider.of<SettingsController>(context);
-    List<String> daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     _animation = DecorationTween(
       begin: BoxDecoration(
         gradient: LinearGradient(
@@ -80,9 +80,18 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
           padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
           child: Column(
             children: [
-              WeeklyExpenseBarGraph(
-                focusedTime: const [100, 150, 200, 175, 120, 90, 80],
-                daysOfWeek: daysOfWeek,
+              const WeeklyExpenseBarGraph(),
+              IconButton(
+                onPressed: () async {
+                  // Call getLast7DaysFocusSessions() method
+                  List<String> last7DaysSessions = await repository.getLast7DaysNames();
+
+                  // Print the results
+                  for (var day in last7DaysSessions) {
+                    print(day);
+                  }
+                },
+                icon: const Icon(Icons.ac_unit),
               ),
             ],
           ),

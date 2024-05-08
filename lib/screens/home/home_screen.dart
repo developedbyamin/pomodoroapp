@@ -77,7 +77,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       },
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(PomodoroAppSizes.borderRadiusSm),
+          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,17 +85,6 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  AppBarIcon(
-                    iconPath: 'assets/knowledge-graph.png',
-                    text: 'Statistics',
-                    onPressed: () {
-                      Get.to(
-                        () => const StatisticsPage(),
-                        transition: Transition.fadeIn,
-                        duration: const Duration(milliseconds: 500),
-                      );
-                    },
-                  ),
                   AppBarIcon(
                     iconPath: 'assets/history.png',
                     text: 'History',
@@ -105,6 +94,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
                           duration: const Duration(milliseconds: 500));
                     },
                   ),
+                  Text('FocusFlow',style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white),),
                   AppBarIcon(
                     iconPath: 'assets/settings.png',
                     text: 'Settings',

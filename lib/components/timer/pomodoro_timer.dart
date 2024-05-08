@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../models/session_repository.dart';
+import '../../repository/session_repository.dart';
 import '../../screens/settings/settings_controller.dart';
 import '../../utils/constants/sizes.dart';
 

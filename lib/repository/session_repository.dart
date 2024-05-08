@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'session_record_model.dart';
+import '../models/session_record_model.dart';
 
 class FocusSessionRepository {
   static const String _sessionKey = 'focus_sessions';
@@ -79,68 +79,39 @@ class FocusSessionRepository {
   }
 
 
-  Future<Map<String, List<FocusSessionRecord>>> getLast7DaysFocusSessions() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    // Retrieve session records from shared preferences
-    List<String>? sessionStrings = prefs.getStringList(_sessionKey);
-
-    // Convert session records from strings to objects
-    List<FocusSessionRecord> sessionRecords = sessionStrings?.map((str) {
-      List<String> parts = str.split(',');
-      return FocusSessionRecord(
-        focusedSeconds: int.parse(parts[0]),
-        date: DateTime.parse(parts[1]),
-      );
-    }).toList() ?? [];
-
-    // Group session records by day of the week
-    Map<String, List<FocusSessionRecord>> last7DaysSessions = {
-      'Mon': [],
-      'Tue': [],
-      'Wed': [],
-      'Thu': [],
-      'Fri': [],
-      'Sat': [],
-      'Sun': [],
-    };
-
-    // Get the current date and time
+  Future<List<String>> getLast7DaysNames() async {
     DateTime now = DateTime.now();
+    List<String> daysNames = [];
 
-    // Calculate the date 7 days ago
-    DateTime sevenDaysAgo = now.subtract(const Duration(days: 7));
-
-    // Iterate through session records and categorize them by day of the week
-    for (var record in sessionRecords) {
-      if (record.date.isAfter(sevenDaysAgo) && record.date.isBefore(now)) {
-        String dayAbbreviation = _getDayAbbreviation(record.date.weekday);
-        last7DaysSessions[dayAbbreviation]?.add(record);
-      }
+    for (int i = 0; i < 7; i++) {
+      DateTime day = now.subtract(Duration(days: i));
+      daysNames.add(_getDayAbbreviation(day.weekday));
     }
 
-    return last7DaysSessions;
+    return daysNames.reversed.toList();
   }
+
+
 
   String _getDayAbbreviation(int weekday) {
-    switch (weekday) {
-      case DateTime.monday:
-        return 'Mon';
-      case DateTime.tuesday:
-        return 'Tue';
-      case DateTime.wednesday:
-        return 'Wed';
-      case DateTime.thursday:
-        return 'Thu';
-      case DateTime.friday:
-        return 'Fri';
-      case DateTime.saturday:
-        return 'Sat';
-      case DateTime.sunday:
-        return 'Sun';
-      default:
-        return '';
+      switch (weekday) {
+        case DateTime.monday:
+          return 'Mon';
+        case DateTime.tuesday:
+          return 'Tue';
+        case DateTime.wednesday:
+          return 'Wed';
+        case DateTime.thursday:
+          return 'Thu';
+        case DateTime.friday:
+          return 'Fri';
+        case DateTime.saturday:
+          return 'Sat';
+        case DateTime.sunday:
+          return 'Sun';
+        default:
+          return '';
+      }
     }
-  }
 
 }
