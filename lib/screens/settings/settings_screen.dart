@@ -191,6 +191,32 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
                         ),
                       ),
                     ),
+                    const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.message, color: Colors.white,),
+                                  const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
+                                  Text('Follow me on Instagram',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                ],
+                              ),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),

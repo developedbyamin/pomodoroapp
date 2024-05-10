@@ -25,7 +25,7 @@ class _HistoryListState extends State<HistoryList> {
 
   Future<void> loadSessionRecords() async {
     setState(() {
-      _isLoading = true; // Set isLoading to true when loading starts
+      _isLoading = true;
     });
     List<FocusSessionRecord> records = await repository.getAllFocusSessions();
     Map<DateTime, int> focusedTime =
@@ -33,7 +33,7 @@ class _HistoryListState extends State<HistoryList> {
     setState(() {
       sessionRecords = records;
       dailyFocusedTime = focusedTime;
-      _isLoading = false; // Set isLoading to false after loading completes
+      _isLoading = false;
     });
   }
 
@@ -67,9 +67,7 @@ class _HistoryListState extends State<HistoryList> {
       ),
       child: IconButton(
         onPressed: () async {
-          // Delete all records
           await FocusSessionRepository().deleteAllFocusSessions();
-          // Reload session records after deletion
           await loadSessionRecords();
         },
         icon: const Icon(Icons.delete_outline, size: 32, color: Colors.white),
