@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pomodoro/screens/home/home_screen.dart'; // Import your HomeScreen here
+import 'package:pomodoro/screens/home/home_screen.dart';
 import 'package:pomodoro/screens/settings/settings_controller.dart';
 import 'package:pomodoro/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key,});
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +35,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       vsync: this,
       duration: const Duration(seconds: 3),
     )..repeat(reverse: true);
-
-    _startLoadingIndicator();
+    _navigateToHomeScreen();
   }
 
   @override
@@ -45,11 +44,9 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
     super.dispose();
   }
 
-  // Method to start loading indicator and navigate after 2 seconds
-  void _startLoadingIndicator() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const HomeScreen());
-    });
+  void _navigateToHomeScreen() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Get.offAll(() => const HomeScreen());
   }
 
   @override
@@ -89,7 +86,13 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('FocusFlow', style: Theme.of(context).textTheme.headlineLarge!.copyWith(color: Colors.white),),
+                  Text(
+                    'FocusFlow',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(color: Colors.white),
+                  ),
                   const SizedBox(height: PomodoroAppSizes.spaceBtwSections,),
                   const Center(
                     child: CircularProgressIndicator(color: Colors.white,strokeWidth: 5,strokeAlign: 1, ),
