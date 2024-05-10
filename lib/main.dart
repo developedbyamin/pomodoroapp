@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:pomodoro/screens/home/home_screen.dart';
 import 'package:pomodoro/screens/settings/settings_controller.dart';
+import 'package:pomodoro/screens/welcome_screen.dart';
 import 'package:pomodoro/utils/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       create: (_) => SettingsController(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen(),
+        home: const WelcomeScreen(),
         theme: const PomodoroAppTheme().themeData,
       ),
     );

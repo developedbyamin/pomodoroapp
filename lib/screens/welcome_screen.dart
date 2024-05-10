@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pomodoro/screens/home/home_screen.dart'; // Import your HomeScreen here
+import 'package:pomodoro/screens/settings/settings_controller.dart';
 import 'package:pomodoro/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
-import '../../components/bar_graph/bar_graph.dart';
-import '../settings/settings_controller.dart';
-import 'date_history.dart';
 
-class HistoryPage extends StatelessWidget {
-  const HistoryPage({
-    super.key,
-  });
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {
-    return const Material(
-      child: AnimatedBackground(),
+    return const Scaffold(
+      body: AnimatedBackground(),
     );
   }
 }
 
 class AnimatedBackground extends StatefulWidget {
-  const AnimatedBackground({
-    super.key,
-  });
+  const AnimatedBackground({super.key,});
 
   @override
   State<AnimatedBackground> createState() => _AnimatedBackgroundState();
@@ -31,7 +27,6 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Decoration> _animation;
-  HistoryList historyList = const HistoryList();
 
   @override
   void initState() {
@@ -40,6 +35,8 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       vsync: this,
       duration: const Duration(seconds: 3),
     )..repeat(reverse: true);
+
+    _startLoadingIndicator();
   }
 
   @override
@@ -48,10 +45,16 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
     super.dispose();
   }
 
+  // Method to start loading indicator and navigate after 2 seconds
+  void _startLoadingIndicator() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.to(() => const HomeScreen());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final settingsController = Provider.of<SettingsController>(context);
-    final textTheme = Theme.of(context).textTheme;
     _animation = DecorationTween(
       begin: BoxDecoration(
         gradient: LinearGradient(
@@ -69,34 +72,35 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       ),
     ).animate(_controller);
 
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return DecoratedBox(
-          decoration: _animation.value,
-          child: Padding(
-            padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-            child: SafeArea(
+    return Stack(
+      children: [
+        AnimatedBuilder(
+          animation: _animation,
+          builder: (context, child) {
+            return DecoratedBox(
+              decoration: _animation.value,
+              child: child,
+            );
+          },
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('History',
-                      style: textTheme.titleLarge!.copyWith(color: Colors.white)),
-                  const SizedBox(
-                    height: PomodoroAppSizes.spaceBtwItems,
+                  Text('FocusFlow', style: Theme.of(context).textTheme.headlineLarge!.copyWith(color: Colors.white),),
+                  const SizedBox(height: PomodoroAppSizes.spaceBtwSections,),
+                  const Center(
+                    child: CircularProgressIndicator(color: Colors.white,strokeWidth: 5,strokeAlign: 1, ),
                   ),
-                  const WeeklyExpenseBarGraph(),
-                  const SizedBox(
-                    height: PomodoroAppSizes.spaceBtwSections,
-                  ),
-                  const HistoryList(),
                 ],
               ),
             ),
           ),
-        );
-      },
+        ),
+        // Loading indicator
+      ],
     );
   }
-
 }

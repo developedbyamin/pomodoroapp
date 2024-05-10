@@ -4,20 +4,20 @@ import 'package:provider/provider.dart';
 import '../settings_controller.dart';
 
 class ThemeChanger extends StatelessWidget {
-  const ThemeChanger({super.key, required this.gradientColors,});
+  const ThemeChanger({super.key, required this.gradientColors});
 
   final List<Color> gradientColors;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Provider.of<SettingsController>(context, listen: false).selectedGradient = gradientColors;
-      },
-      child: Consumer<SettingsController>(
-        builder: (context, colorSelectionModel, child) {
-          final isSelected = colorSelectionModel.selectedGradient == gradientColors;
-          return Container(
+    return Consumer<SettingsController>(
+      builder: (context, settingsController, _) {
+        final isSelected = settingsController.selectedGradient == gradientColors;
+        return GestureDetector(
+          onTap: () {
+            settingsController.selectedGradient = gradientColors;
+          },
+          child: Container(
             width: 50,
             height: 100,
             decoration: BoxDecoration(
@@ -32,9 +32,9 @@ class ThemeChanger extends StatelessWidget {
                 end: Alignment.bottomCenter,
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

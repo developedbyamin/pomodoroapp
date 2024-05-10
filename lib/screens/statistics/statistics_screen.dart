@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
+import '../../components/bar_graph/bar_graph.dart';
 import '../../repository/session_repository.dart';
 import '../settings/settings_controller.dart';
-import 'bar_graph/bar_graph.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({

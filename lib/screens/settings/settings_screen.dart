@@ -74,125 +74,129 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('Settings', style: textTheme.titleLarge!.copyWith(color: Colors.white),),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const KeepScreenOnSwitch(),
-                  const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
-                  const ThemeSection(),
-                  const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white, width: 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.privacy_tip, color: Colors.white,),
-                                const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
-                                Text('Privacy & Policy',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
-                              ],
-                            ),
-                            const Icon(Icons.arrow_forward_ios, color: Colors.white,),
-                          ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Settings', style: textTheme.titleLarge!.copyWith(color: Colors.white),),
+                const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const KeepScreenOnSwitch(),
+                    const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                    const ThemeSection(),
+                    const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.privacy_tip, color: Colors.white,),
+                                  const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
+                                  Text('Privacy & Policy',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                ],
+                              ),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white, width: 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.star_rate, color: Colors.white,),
-                                const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
-                                Text('Rate us',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
-                              ],
-                            ),
-                            const Icon(Icons.arrow_forward_ios, color: Colors.white,),
-                          ],
+                    const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.star_rate, color: Colors.white,),
+                                  const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
+                                  Text('Rate us',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                ],
+                              ),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white, width: 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.edit_document, color: Colors.white,),
-                                const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
-                                Text('Terms & Conditions',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
-                              ],
-                            ),
-                            const Icon(Icons.arrow_forward_ios, color: Colors.white,),
-                          ],
+                    const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.edit_document, color: Colors.white,),
+                                  const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
+                                  Text('Terms & Conditions',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                ],
+                              ),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white, width: 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.message, color: Colors.white,),
-                                const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
-                                Text('Feedback & Support',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
-                              ],
-                            ),
-                            const Icon(Icons.arrow_forward_ios, color: Colors.white,),
-                          ],
+                    const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.message, color: Colors.white,),
+                                  const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
+                                  Text('Feedback & Support',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                ],
+                              ),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Text('Version 1.1.2',style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),),
-            ],
+                  ],
+                ),
+                const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
+                Text('Version 1.1.2',style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),),
+              ],
+            ),
           ),
         ),
       ),

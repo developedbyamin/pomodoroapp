@@ -12,37 +12,56 @@ class KeepScreenOnSwitch extends StatefulWidget {
 }
 
 class _KeepScreenOnSwitchState extends State<KeepScreenOnSwitch> {
+  late SettingsController _settingsController;
+
+  @override
+  void initState() {
+    super.initState();
+    _settingsController = Provider.of<SettingsController>(context, listen: false);
+    _settingsController.loadSavedSettings();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var screenTimeoutState = Provider.of<SettingsController>(context);
     final textTheme = Theme.of(context).textTheme;
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white, width: 1),
-      ),
-      padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Consumer<SettingsController>(
+      builder: (context, settingsController, _) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.white, width: 1),
+          ),
+          padding: const EdgeInsets.all(PomodoroAppSizes.spaceBtwItems),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Keep screen awake', style: textTheme.titleLarge!.copyWith(color: Colors.white),),
-              Text('Enable to keep the timer screen always on',  style: textTheme.labelSmall!.copyWith(color: Colors.white),),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Keep screen awake',
+                    style: textTheme.titleLarge!.copyWith(color: Colors.white),
+                  ),
+                  Text(
+                    'Enable to keep the timer screen always on',
+                    style: textTheme.labelSmall!.copyWith(color: Colors.white),
+                  ),
+                ],
+              ),
+              Switch(
+                value: settingsController.isAlwaysOn,
+                onChanged: (value) {
+                  settingsController.setAlwaysOn(value);
+                },
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+                inactiveThumbColor: Colors.grey,
+                inactiveTrackColor: Colors.grey[300],
+              ),
             ],
           ),
-          Switch(
-            value: screenTimeoutState.isAlwaysOn,
-            onChanged: (value) => screenTimeoutState.setAlwaysOn(value),
-            activeTrackColor: Colors.lightGreenAccent,
-            activeColor: Colors.green,
-            inactiveThumbColor: Colors.grey,
-            inactiveTrackColor: Colors.grey[300],
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

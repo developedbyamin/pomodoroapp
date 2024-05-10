@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import '../history/history_screen.dart';
 import '../settings/settings_controller.dart';
 import '../settings/settings_screen.dart';
-import '../statistics/statistics_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
