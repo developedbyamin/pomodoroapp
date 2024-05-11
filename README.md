@@ -31,6 +31,8 @@ Key Features:
         <p style="text-align: center;">History & Statistics</p>
     </div>
 </div>
+
+
 ### How to install
 1. **Clone the github repo**
    ```
