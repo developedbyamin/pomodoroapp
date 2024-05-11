@@ -7,32 +7,30 @@ Key Features:
 
 - **Intuitive Interface**: The app features a user-friendly interface that makes it easy to start, pause, or reset Pomodoro sessions with just a few taps.
 
-- **Flexible Settings**: Users can personalize their Pomodoro experience by adjusting session duration, app themes and always on etc.
+- **Flexible Settings**: Users can personalize their Pomodoro experience by adjusting session duration, app themes, always-on mode, and more.
 
 - **History & Statistics**: FocusFlow tracks users' Pomodoro sessions and provides detailed statistics and insights into their productivity habits. Users can view their work history, session completion rates, and productivity trends over time, empowering them to identify areas for improvement.
 
 ### Screenshots:
 
-1. **Pomodoro Timer**:
-   ![Pomodoro Timer](assets/pomodorotimer.jpg)
-
-   The Pomodoro Timer screen displays the countdown for the current work session, allowing users to track their progress and stay focused on their tasks.
-
-2. **Set Time**:
-   ![Set Time](assets/set_time.jpg)
-
-   In the Set Time screen, users can customize the duration of Pomodoro sessions and breaks to align with their work habits and preferences.
-
-3. **Settings**:
-   ![Settings](assets/settings.jpg)
-
-   The Settings screen offers users the ability to configure various app settings, such as notification preferences and sound effects, to create a personalized Pomodoro experience.
-
-4. **History & Statistics**:
-   ![History & Statistics](assets/history&statistics.jpg)
-
-   The History & Statistics section provides users with valuable insights into their Pomodoro usage, including session completion rates, total work time, and productivity trends, helping them track their progress and make informed decisions to optimize their workflow.
-
+<div style="display: flex; justify-content: space-between;">
+    <div style="flex: 1; margin-right: 10px;">
+        <img src="assets/pomodorotimer.jpg" alt="Pomodoro Timer" style="max-width: 100%; height: auto;">
+        <p style="text-align: center;">Pomodoro Timer</p>
+    </div>
+    <div style="flex: 1; margin-right: 10px;">
+        <img src="assets/set_time.jpg" alt="Set Time" style="max-width: 100%; height: auto;">
+        <p style="text-align: center;">Set Time</p>
+    </div>
+    <div style="flex: 1; margin-right: 10px;">
+        <img src="assets/settings.jpg" alt="Settings" style="max-width: 100%; height: auto;">
+        <p style="text-align: center;">Settings</p>
+    </div>
+    <div style="flex: 1;">
+        <img src="assets/history&statistics.jpg" alt="History & Statistics" style="max-width: 100%; height: auto;">
+        <p style="text-align: center;">History & Statistics</p>
+    </div>
+</div>
 ### How to install
 1. **Clone the github repo**
    ```
