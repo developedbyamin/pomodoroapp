@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
               theme: const PomodoroAppTheme().themeData,
             );
           } else {
-            // You can return a loading indicator here if needed
             return Container();
           }
         },
@@ -50,11 +49,9 @@ Future<Widget> _checkFirstLaunch() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isFirstLaunch = prefs.getBool('first_launch') ?? true;
   if (isFirstLaunch) {
-    // If it's the first launch, navigate to WelcomeScreen and set first_launch to false
     prefs.setBool('first_launch', false);
     return const WelcomeScreen();
   } else {
-    // If it's not the first launch, navigate to HomeScreen
     return const HomeScreen();
   }
 }

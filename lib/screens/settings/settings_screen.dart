@@ -3,6 +3,7 @@ import 'package:pomodoro/screens/settings/settings_controller.dart';
 import 'package:pomodoro/screens/settings/theme_section/theme_section.dart';
 import 'package:pomodoro/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'keep_screen_on.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -89,7 +90,9 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
                     const ThemeSection(),
                     const SizedBox(height: PomodoroAppSizes.spaceBtwItems,),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        _launchInstagram();
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -102,9 +105,9 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
                             children: [
                               Row(
                                 children: [
-                                  const Icon(Icons.privacy_tip, color: Colors.white,),
+                                  const Icon(Icons.person, color: Colors.white,),
                                   const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
-                                  Text('Privacy & Policy',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                  Text('Follow me on Instagram',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
                                 ],
                               ),
                               const Icon(Icons.arrow_forward_ios, color: Colors.white,),
@@ -206,9 +209,9 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
                             children: [
                               Row(
                                 children: [
-                                  const Icon(Icons.message, color: Colors.white,),
+                                  const Icon(Icons.privacy_tip, color: Colors.white,),
                                   const SizedBox(width: PomodoroAppSizes.spaceBtwItems,),
-                                  Text('Follow me on Instagram',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
+                                  Text('Privacy & Policy',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),
                                 ],
                               ),
                               const Icon(Icons.arrow_forward_ios, color: Colors.white,),
@@ -228,4 +231,13 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
       ),
     );
   }
+  _launchInstagram() async {
+    const url = 'https://www.instagram.com/amin_aghayev/';
+    try {
+      await launch(url);
+    } catch (e) {
+      throw 'Could not launch $url: $e';
+    }
+  }
+
 }
